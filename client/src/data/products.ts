@@ -38,14 +38,14 @@ function generateProducts(): Product[] {
         const isNew = id % 8 === 0;
         const isBestseller = id % 12 === 0;
         products.push({
-          id: `${cat.name.toLowerCase().replace(/\s/g, '-')}-${idx}-${i}`,
+          id: `${cat.name.toLowerCase().replace(/\s/g, '-')}-${idx}`,
           name: item,
           category: cat.name,
           price: Math.floor(Math.random() * 50000) + 1000,
           originalPrice: Math.floor(Math.random() * 60000) + 15000,
           rating: Math.round((Math.random() * 2 + 3.5) * 10) / 10,
           reviews: Math.floor(Math.random() * 3000) + 100,
-          image: `https://readdy.ai/api/search-image?query=${encodeURIComponent(item + ' product photography')} &width=400&height=400&seq=${id}&orientation=squarish`,
+          image: `https://images.unsplash.com/photo-${Math.floor(Math.random() * 1000000000)}-${Math.floor(Math.random() * 1000000000)}?w=400&h=400&fit=crop`,
           isNew,
           isBestseller,
           inStock: Math.random() > 0.1
