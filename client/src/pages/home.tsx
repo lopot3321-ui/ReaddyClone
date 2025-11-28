@@ -49,13 +49,13 @@ export default function Home() {
   };
 
   const ProductCard = ({ product, index }: { product: typeof products[0]; index: number }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.05 }}
-      viewport={{ once: true }}
-    >
-      <Link href={`/product/${product.id}`}>
+    <Link href={`/product/${product.id}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.05 }}
+        viewport={{ once: true }}
+      >
         <Card className="glass-card border-white/10 bg-white/5 overflow-hidden group hover:border-white/20 cursor-pointer h-full flex flex-col transition-all duration-300">
           <CardContent className="p-0 relative flex-1 overflow-hidden">
             {product.isNew && (
@@ -65,11 +65,11 @@ export default function Home() {
               <Badge className="absolute top-3 left-3 bg-yellow-500 text-white border-none z-10">Bestseller</Badge>
             )}
             
-            <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-              <Button size="icon" variant="secondary" className="h-8 w-8 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 text-white">
+            <button onClick={(e) => e.preventDefault()} className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="h-8 w-8 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 text-white flex items-center justify-center">
                 <Heart className="w-4 h-4" />
-              </Button>
-            </div>
+              </div>
+            </button>
 
             <div className="aspect-square overflow-hidden bg-white p-4 flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500">
               <img 
@@ -100,14 +100,14 @@ export default function Home() {
                   <span className="text-xs text-muted-foreground line-through block">${product.originalPrice.toLocaleString()}</span>
                 )}
               </div>
-              <Button size="sm" className="bg-secondary hover:bg-secondary/90 rounded-full">
-                <ShoppingCart className="w-3 h-3" />
-              </Button>
+              <button onClick={(e) => e.preventDefault()} className="h-9 w-9 rounded-full bg-secondary hover:bg-secondary/90 flex items-center justify-center">
+                <ShoppingCart className="w-3 h-3 text-white" />
+              </button>
             </div>
           </CardFooter>
         </Card>
-      </Link>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 
   return (
@@ -133,9 +133,7 @@ export default function Home() {
                       More {category}
                     </h2>
                   </motion.div>
-                  <Link href="/products">
-                    <Button variant="outline" className="border-white/10 hover:bg-white/10 hidden md:flex">View All</Button>
-                  </Link>
+                  <button onClick={() => window.location.href = '/products'} className="hidden md:flex px-4 py-2 border border-white/10 rounded-lg hover:bg-white/10 transition-colors text-sm font-medium text-white">View All</button>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
