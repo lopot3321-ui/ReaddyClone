@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar";
 import { ProductViewer } from "@/components/3d/product-viewer";
+import { SimilarProducts } from "@/components/similar-products";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -201,6 +202,11 @@ export default function ProductDetails() {
               </TabsContent>
             </div>
           </Tabs>
+        </div>
+
+        {/* Similar & Top Products */}
+        <div className="mt-20">
+          <SimilarProducts />
         </div>
       </main>
     </div>

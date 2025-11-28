@@ -4,6 +4,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ChatWidget } from "@/components/chat-widget";
+import { AdvancedSearch } from "@/components/advanced-search";
+import { AIAssistant } from "@/components/ai-assistant";
 import Home from "@/pages/home";
 import ProductsPage from "@/pages/products";
 import ProductDetails from "@/pages/product-details";
@@ -48,6 +50,7 @@ function Router() {
       <Route path="/signup" component={SignUpPage} />
       <Route path="/login" component={SignUpPage} />
       <Route path="/profile" component={ProfilePage} />
+      <Route path="/profile-complete" component={ProfilePage} />
       <Route path="/wishlist" component={WishlistPage} />
       <Route path="/deals" component={DealsPage} />
       <Route path="/compare" component={ComparePage} />
@@ -81,8 +84,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <AdvancedSearch />
         <Router />
         <ChatWidget />
+        <AIAssistant />
       </TooltipProvider>
     </QueryClientProvider>
   );
