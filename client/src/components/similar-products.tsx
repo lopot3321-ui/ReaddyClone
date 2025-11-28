@@ -7,7 +7,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, ShoppingCart, TrendingUp } from "lucide-react";
 
-export default function SimilarProducts() {
+export function SimilarProducts() {
   const similarProducts = products.slice(0, 8);
   const topProducts = products.slice().sort((a, b) => b.rating - a.rating).slice(0, 6);
 

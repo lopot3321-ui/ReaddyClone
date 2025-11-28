@@ -12,100 +12,66 @@ export interface Product {
   inStock: boolean;
 }
 
-export const products: Product[] = [
-  {
-    id: "e1",
-    name: "iPhone 15 Pro Max",
-    category: "Electronics",
-    price: 45999,
-    originalPrice: 49999,
-    rating: 4.9,
-    reviews: 2847,
-    image: "https://public.readdy.ai/ai/img_res/3ecb9515515c5565557f3118f811827c.jpg",
-    isNew: true,
-    inStock: true
-  },
-  {
-    id: "e2",
-    name: "Samsung Galaxy S24 Ultra",
-    category: "Electronics",
-    price: 52999,
-    originalPrice: 56999,
-    rating: 4.8,
-    reviews: 1923,
-    image: "https://readdy.ai/api/search-image?query=elegant%20Samsung%20Galaxy%20S24%20Ultra%20smartphone%20with%20S%20Pen%20stylus%20quad%20camera%20array%20on%20pristine%20white%20background%20studio%20lighting%20premium%20product%20shot&width=400&height=400&seq=e2&orientation=squarish",
-    inStock: true
-  },
-  {
-    id: "e3",
-    name: 'MacBook Pro 16" M3',
-    category: "Electronics",
-    price: 125999,
-    originalPrice: 139999,
-    rating: 4.9,
-    reviews: 1456,
-    image: "https://readdy.ai/api/search-image?query=sleek%20silver%20MacBook%20Pro%2016%20inch%20laptop%20open%20display%20showing%20screen%20on%20clean%20white%20surface%20minimal%20background%20professional%20tech%20photography&width=400&height=400&seq=e3&orientation=squarish",
-    isBestseller: true,
-    inStock: true
-  },
-  {
-    id: "e4",
-    name: "Sony WH-1000XM5 Headphones",
-    category: "Electronics",
-    price: 15999,
-    originalPrice: 18999,
-    rating: 4.7,
-    reviews: 3421,
-    image: "https://readdy.ai/api/search-image?query=premium%20black%20Sony%20noise%20cancelling%20over%20ear%20headphones%20floating%20on%20pure%20white%20background%20soft%20shadows%20product%20photography%20style&width=400&height=400&seq=e4&orientation=squarish",
-    inStock: true
-  },
-  {
-    id: "f1",
-    name: "Premium Leather Jacket",
-    category: "Fashion",
-    price: 8999,
-    originalPrice: 11999,
-    rating: 4.6,
-    reviews: 543,
-    image: "https://readdy.ai/api/search-image?query=luxury%20black%20leather%20jacket%20hanging%20on%20white%20background%20fashion%20product%20photography%20studio%20lighting&width=400&height=400&seq=f1&orientation=squarish",
-    inStock: true
-  },
-  {
-    id: "s1",
-    name: "Professional Yoga Mat",
-    category: "Sports",
-    price: 1999,
-    originalPrice: 2499,
-    rating: 4.8,
-    reviews: 1567,
-    image: "https://readdy.ai/api/search-image?query=premium%20yoga%20mat%20rolled%20up%20on%20white%20background%20fitness%20equipment%20product%20photography&width=400&height=400&seq=s1&orientation=squarish",
-    inStock: true
-  },
-  {
-    id: "h1",
-    name: "Smart LED Bulbs 4-Pack",
-    category: "Home",
-    price: 1999,
-    originalPrice: 2499,
-    rating: 4.5,
-    reviews: 1876,
-    image: "https://readdy.ai/api/search-image?query=smart%20LED%20light%20bulbs%20arranged%20on%20white%20background%20home%20automation%20product&width=400&height=400&seq=h1&orientation=squarish",
-    inStock: true
-  }
-];
+// Generate 500+ products dynamically
+function generateProducts(): Product[] {
+  const products: Product[] = [];
+  
+  const categories = [
+    { name: "Electronics", items: ["iPhone 15 Pro Max", "Samsung Galaxy S24", "MacBook Pro", "Sony Headphones", "iPad Pro", "Apple Watch", "DJI Drone", "Canon Camera", "LG OLED TV", "Bose Speaker", "Nintendo Switch", "PlayStation 5", "Xbox Series X", "Meta Quest 3", "Google Pixel 8", "OnePlus 12", "Xiaomi 14", "Nothing Phone", "Motorola Edge", "Samsung Galaxy Tab"] },
+    { name: "Fashion", items: ["Premium Leather Jacket", "Tailored Blazer", "Summer Maxi Dress", "Designer Jeans", "Linen Shirt", "Wool Trench Coat", "Athletic Joggers", "Silk Evening Dress", "Cashmere Sweater", "Cotton T-Shirt", "Formal Suit", "Casual Polo", "Vintage Denim", "Floral Blouse", "Business Pants", "Cargo Shorts", "Beach Shirt", "Leather Boots", "Sneakers", "Loafers"] },
+    { name: "Beauty & Cosmetics", items: ["Luxury Face Serum", "Anti-Aging Cream", "Hydrating Moisturizer", "Vitamin C Serum", "Eye Cream Treatment", "Makeup Palette Pro", "Foundation Stick", "Lipstick Set", "Mascara", "Eyeliner Pen", "Face Mask", "Clay Cleanser", "Moisturizing Lotion", "Body Butter", "Hair Serum", "Face Toner", "Concealer", "Blush Palette", "Highlighter", "Setting Spray"] },
+    { name: "Food & Beverages", items: ["Organic Honey 500g", "Premium Coffee Beans", "Artisan Chocolate Box", "Green Tea Collection", "Olive Oil Extra Virgin", "Truffle Oil", "Balsamic Vinegar", "Sea Salt", "Spice Set", "Jam Collection", "Pasta Set", "Rice Selection", "Nuts & Seeds", "Dried Fruits", "Coffee Pods", "Tea Variety Pack", "Honey Jar", "Coconut Oil", "Almond Butter", "Dark Chocolate"] },
+    { name: "Sports & Fitness", items: ["Professional Yoga Mat", "Adjustable Dumbbells", "Running Shoes Pro", "Resistance Bands Set", "Smart Fitness Watch", "Basketball Official", "Tennis Racket Pro", "Resistance Bands", "Foam Roller", "Jump Rope", "Boxing Gloves", "Kettlebell", "Rowing Machine", "Exercise Bike", "Treadmill", "Yoga Block", "Resistance Tube", "Workout Mat", "Gym Bag", "Water Bottle"] },
+    { name: "Home & Living", items: ["Smart LED Bulbs 4-Pack", "Luxury Bedding Set", "Decorative Throw Pillows", "Wall Art Canvas Set", "Aromatherapy Diffuser", "Smart Speaker", "Ring Doorbell", "Smart Lock", "Air Purifier", "Humidifier", "Coffee Maker", "Blender Pro", "Toaster", "Microwave", "Vacuum Cleaner", "Air Fryer", "Instant Pot", "Slow Cooker", "Rice Cooker", "Dishwasher"] },
+    { name: "Appliances", items: ["Air Fryer XL", "Blender Pro 2000W", "Microwave Oven Smart", "Rice Cooker Deluxe", "Electric Kettle", "Coffee Maker Pro", "Sandwich Maker", "Waffle Iron", "Toaster Oven", "Food Processor", "Mixer Stand", "Juicer Pro", "Smoothie Maker", "Pressure Cooker", "Slow Cooker", "Bread Maker", "Pasta Maker", "Ice Cream Maker", "Yogurt Maker", "Sous Vide Machine"] },
+    { name: "Health & Wellness", items: ["Digital Blood Pressure Monitor", "Massage Gun Pro", "Infrared Thermometer", "Pulse Oximeter", "Heating Pad Electric", "Foot Massager", "Back Massager", "Neck Traction", "TENS Machine", "Sauna Blanket", "Humidifier", "Air Purifier", "Water Bottle Smart", "Scale Digital", "Fitness Tracker", "Heart Rate Monitor", "Sleep Tracker", "Meditation Cushion", "Yoga Mat Premium", "Recovery Boots"] },
+    { name: "Books & Media", items: ["Self Help Book Bundle", "Mystery Novel Set", "Science Fiction Series", "Business Book", "Biography Collection", "Cookbook Premium", "Art Book", "Travel Guide", "Children's Book Set", "Comic Book Series", "Magazine Subscription", "Audiobook Series", "Podcast Equipment", "Vinyl Record", "CD Collection", "DVD Box Set", "Blu-ray Movie", "E-Reader Device", "Book Stand", "Reading Light"] },
+    { name: "Toys & Games", items: ["LEGO Building Set", "Board Game Collection", "Action Figure Set", "Puzzle 1000 Piece", "Chess Set Luxury", "Video Game Console", "Gaming Headset", "Drones for Beginners", "RC Car Pro", "Telescope", "Microscope Set", "Science Kit", "Art Supply Set", "Musical Instrument", "Guitar Beginner", "Keyboard Digital", "Ukulele", "Harmonica", "Drums Set", "Microphone Karaoke"] },
+    { name: "Automotive", items: ["Car Phone Holder", "Dash Cam 4K", "Car Air Purifier", "Seat Cushion", "Steering Wheel Cover", "Floor Mats Set", "Car Organizer", "Tire Gauge Digital", "Battery Charger", "Jump Starter", "Car Vacuum", "Pressure Washer", "Wax Coating", "Car Cover", "Bike Rack", "Roof Box", "Hitch Lock", "Tow Strap", "Emergency Kit", "Roadside Kit"] },
+    { name: "Jewelry & Watches", items: ["Luxury Watch", "Diamond Necklace", "Gold Bracelet", "Silver Ring", "Pearl Earrings", "Engagement Ring", "Pendant Necklace", "Tennis Bracelet", "Ankle Bracelet", "Brooch Pin", "Cufflinks Set", "Watch Band", "Charm Bracelet", "Locket Necklace", "Body Chain", "Nose Ring", "Ear Cuff", "Finger Ring Set", "Choker Necklace", "Bangle Bracelet"] },
+    { name: "Pet Supplies", items: ["Dog Bed Premium", "Cat Tower Multi-Level", "Pet Feeder Automatic", "Water Fountain Pet", "Dog Leash Retractable", "Cat Litter Box", "Dog Collar GPS", "Pet Grooming Kit", "Pet Shampoo", "Dog Treats", "Cat Food Premium", "Bird Cage", "Hamster Wheel", "Fish Tank Setup", "Aquarium Filter", "Pet Toy Bundle", "Dog Crate", "Pet Carrier", "Pet Backpack", "Dog Sweater"] }
+  ];
+
+  let id = 1;
+  categories.forEach(cat => {
+    cat.items.forEach((item, idx) => {
+      for (let i = 0; i < 3; i++) {
+        const isNew = id % 5 === 0;
+        const isBestseller = id % 7 === 0;
+        products.push({
+          id: `${cat.name.toLowerCase().replace(/\s/g, '-')}-${idx}-${i}`,
+          name: `${item}${i > 0 ? ` - Variant ${i + 1}` : ''}`,
+          category: cat.name,
+          price: Math.floor(Math.random() * 50000) + 1000,
+          originalPrice: Math.floor(Math.random() * 60000) + 15000,
+          rating: Math.round((Math.random() * 2 + 3.5) * 10) / 10,
+          reviews: Math.floor(Math.random() * 3000) + 100,
+          image: `https://readdy.ai/api/search-image?query=${encodeURIComponent(item + ' product photography')} &width=400&height=400&seq=${id}&orientation=squarish`,
+          isNew,
+          isBestseller,
+          inStock: Math.random() > 0.1
+        });
+        id++;
+      }
+    });
+  });
+
+  return products;
+}
+
+export const products = generateProducts();
 
 export const categories = [
-  { id: "electronics", name: "Electronics", icon: "Smartphone" },
-  { id: "fashion", name: "Fashion", icon: "Shirt" },
-  { id: "beauty", name: "Beauty", icon: "Sparkles" },
-  { id: "food", name: "Food & Beverage", icon: "Coffee" },
-  { id: "sports", name: "Sports & Fitness", icon: "Dumbbell" },
-  { id: "home", name: "Home & Living", icon: "Home" },
-  { id: "appliances", name: "Appliances", icon: "Refrigerator" },
-  { id: "wellness", name: "Health & Wellness", icon: "Heart" },
-  { id: "books", name: "Books & Media", icon: "Book" },
-  { id: "toys", name: "Toys & Games", icon: "Gamepad2" },
-  { id: "auto", name: "Automotive", icon: "Car" },
-  { id: "jewelry", name: "Jewelry & Watches", icon: "Watch" },
-  { id: "pets", name: "Pet Supplies", icon: "Dog" },
+  { id: "electronics", name: "Electronics & Gadgets", icon: "Smartphone", color: "from-blue-600/20" },
+  { id: "fashion", name: "Fashion & Style", icon: "Shirt", color: "from-pink-600/20" },
+  { id: "beauty", name: "Beauty & Cosmetics", icon: "Sparkles", color: "from-purple-600/20" },
+  { id: "food", name: "Food & Beverages", icon: "Coffee", color: "from-orange-600/20" },
+  { id: "sports", name: "Sports & Fitness", icon: "Dumbbell", color: "from-green-600/20" },
+  { id: "home", name: "Home & Living", icon: "Home", color: "from-cyan-600/20" },
+  { id: "appliances", name: "Appliances", icon: "Refrigerator", color: "from-indigo-600/20" },
+  { id: "wellness", name: "Health & Wellness", icon: "Heart", color: "from-red-600/20" },
+  { id: "books", name: "Books & Media", icon: "Book", color: "from-yellow-600/20" },
+  { id: "toys", name: "Toys & Games", icon: "Gamepad2", color: "from-teal-600/20" },
+  { id: "auto", name: "Automotive", icon: "Car", color: "from-gray-600/20" },
+  { id: "jewelry", name: "Jewelry & Watches", icon: "Watch", color: "from-amber-600/20" },
 ];
